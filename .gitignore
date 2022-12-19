@@ -1,4 +1,4 @@
-Binaries
+﻿Binaries
 DerivedDataCache
 Intermediate
 Saved
@@ -12,3 +12,4 @@ Saved
 *.suo
 *.xcodeproj
 *.xcworkspace
+Build
