@@ -2,6 +2,7 @@
 
 
 #include "Enemy.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AEnemy::AEnemy()
@@ -42,11 +43,18 @@ void AEnemy::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 void AEnemy::GetHit()
 {
 	IsHit = true;
-	auto CharacterAnim = GetMesh()->GetAnimInstance();
+	//auto CharacterAnim = GetMesh()->GetAnimInstance();
 
-	if(CharacterAnim,HitReactMontage)
-	{
-		CharacterAnim->Montage_Play(HitReactMontage);
-	}
+	//if(CharacterAnim && HitReactMontage)
+	//{
+	//	CharacterAnim->Montage_Play(HitReactMontage);
+	//}
+	UGameplayStatics::PlaySoundAtLocation(
+		this,
+		HitSound,
+		GetActorLocation()
+	);
+
+	Destroy();
 }
 
