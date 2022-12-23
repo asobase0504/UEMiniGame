@@ -151,13 +151,6 @@ void AGunCharacter::TraceUnderCrosshairs(FHitResult& TraceHitResult)
         else
         {
             Hit_Target = TraceHitResult.ImpactPoint;
-
-            DrawDebugSphere(
-                GetWorld(),
-                TraceHitResult.ImpactPoint,
-                12.f,
-                12,
-                FColor::Red);
         }
 
     }

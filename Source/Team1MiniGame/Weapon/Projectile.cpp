@@ -6,6 +6,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Particles/ParticleSystem.h"
 #include "Sound/SoundCue.h"
+#include "Team1MiniGame/Enemy/Enemy.h"
 
 AProjectile::AProjectile()
 {
@@ -46,6 +47,12 @@ void AProjectile::BeginPlay()
 void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp,
     FVector NormalImpulse, const FHitResult& Hit)
 {
+    auto Enemy = Cast<AEnemy>(OtherActor);
+    if(Enemy)
+    {
+        Enemy->GetHit();
+    }
+
     if (ImpactParticle)
     {
         UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactParticle, GetTransform());
